@@ -9,14 +9,13 @@ Git is essential for version control and collaboration. It allows developers to 
 
 ### Tutorials
 Like the command line, you just need to know the basics about Git and GitHub to start using it. Our cheatsheet is [here](Git-Cheatsheet).
-* Udacity's [[How to Use Git and GitHub|https://www.udacity.com/course/how-to-use-git-and-github--ud775]]
-* Codecademy's [[Learn Git|https://www.codecademy.com/learn/learn-git]] + [[GitHub Hello World|https://guides.github.com/activities/hello-world/]]
-* [[Git Simulation|https://try.github.io/levels/1/challenges/1]] + [[GitHub Hello World|https://guides.github.com/activities/hello-world/]]
+* Udacity's [How to Use Git and GitHub](https://www.udacity.com/course/how-to-use-git-and-github--ud775)
+* Codecademy's [Learn Git](https://www.codecademy.com/learn/learn-git) + [GitHub Hello World](https://guides.github.com/activities/hello-world/)
+* [Git Simulation](https://try.github.io/levels/1/challenges/1) + [GitHub Hello World](https://guides.github.com/activities/hello-world/)
 
 ### Reference
 Git is admittedly hard to grasp because there's so much you can do with it. So, check these out if you need help understanding how it works or remembering something.
-* [[Our Cheatsheet|Git-Cheatsheet]]
-* [[Git - The Simple Guide|http://rogerdudler.github.io/git-guide/]]
-* [[Visual Git Guide|http://marklodato.github.io/visual-git-guide/index-en.html]]
-* [[Become a Git guru|https://www.atlassian.com/git/tutorials/]]
-* [[Pro Git|https://git-scm.com/book/en/v2]]
+* [Git - The Simple Guide](http://rogerdudler.github.io/git-guide/)
+* [Visual Git Guide](http://marklodato.github.io/visual-git-guide/index-en.html)
+* [Become a Git guru](https://www.atlassian.com/git/tutorials/)
+* [Pro Git](https://git-scm.com/book/en/v2)

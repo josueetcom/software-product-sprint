@@ -2,17 +2,62 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Josue's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+    <div id="content"> 
+      <h1>Josue's Portfolio</h1>
+      <p>
+          Hello, my name is Josue and I'm a Software Engineer at Google. I don't know how to write HTML,CSS, and JS well so this is my humble portfolio.
+      </p>
+     
+      <h2>Background</h2>
+      <p>
+          Originally from Venezuela, I came to the US in 1997 when I was 2 years old. 
+          Except for a few months in California it's all been in the state of Washington. 
+          In 2012 I graduated from high school and began my studies at the University of Washington in Seattle.
+          In 2016 I graduated with a bachelor's in Computer Engineering and then
+          completed a Master's in 2018 in Computer Science and Engineering.
+          Shortly after graduating I started working at Google as a software engineer in Seattle.
+      </p>
+      <p>
+          Some of my interests include, but are not limited to:
+          <ul>
+              <li>Studying the Bible 📖</li>
+              <li>Lifting weights 🏋‍♂</li>
+              <li>Learning languages 🇫🇷</li>
+              <li>Watching Kdramas 🇰🇷</li>
+              <li>Playing chess ♟</li>
+              <li>Hanging out with friends 🍽</li>
+          </ul>
+      </p>
+
+      <h2>Projects</h2>
+      <p>Too many to number I can't keep my resume up to date! 😂</p>
+
+      <h2>Let's Connect!</h2>
+      <div id="links-container">
+      <a class="icon" href="https://github.com/josueetcom"><img class="icon" src="images/logos/github.png" alt="GitHub"/></a>
+      <a class="icon" href="https://www.instagram.com/josueetcom"><img class="icon" src="images/logos/instagram.png" alt="Instagram"/></a>
+      <a class="icon" href="https://www.linkedin.com/in/josueetcom"><img class="icon" src="images/logos/linkedin.png" alt="LinkedIn"/></a>
+      </div>
+      <div style="font-size:small; text-align: right">Icons made by 
+          <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> and
+          <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from 
+          <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+      </div>
+      <h2>Hello World</h2>
+      <p>Click to get <strong>Hello World</strong> in a random language: <button id="button" onclick="addRandomGreeting()">Hello World</button></p>
+      <div id="greeting-container">
+          <div id="lang">English</div><div id="greeting">Hello World</div>
+      </div>
+      
+      <div id="img-container">
+          <p>This is me when I try to take a good picture:</p>
+          <img id="handsomeboy" src="images/me.jpg" alt="handsome boy" width="80%">
+      </div>
     </div>
   </body>
 </html>

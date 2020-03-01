@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+env:
+  PROJECT_ID: sixtor-sps-spring20
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      name: Setup gcloud
+      with:
+        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
+    - run: gcloud info
+    - name: Deploy to App Engine
+      working-directory: ./portfolio/src/main/webapp/WEB-INF/
+      run: gcloud app deploy --project $PROJECT_ID --version ${GITHUB_REF##*/} --no-promote --quiet appengine-web.xml
+    - name: notify on failure
+      if: failure()
+      run: echo this app failed to deploy

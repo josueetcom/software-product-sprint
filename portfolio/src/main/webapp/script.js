@@ -111,9 +111,15 @@ function addRandomGreeting() {
   button.innerText = greeting;
 }
 
-function fetchHello() {
-  fetch('/data').then(response => response.text()).then((text) => {
-    const hello = document.getElementById('hello-container');
-    hello.innerText = text;
+function fetchComments() {
+  fetch('/data').then(response => response.json()).then((jsonArr) => {
+    let ul = document.getElementById('comments-ul');
+    jsonArr
+        .map(comment => {
+          let e = document.createElement('li');
+          e.innerText = comment;
+          return e;
+        })
+        .forEach(e => ul.appendChild(e));
   });
 }

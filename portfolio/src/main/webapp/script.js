@@ -110,3 +110,10 @@ function addRandomGreeting() {
   const button = document.getElementById('button');
   button.innerText = greeting;
 }
+
+function fetchHello() {
+  fetch('/data').then(response => response.text()).then((text) => {
+    const hello = document.getElementById('hello-container');
+    hello.innerText = text;
+  });
+}

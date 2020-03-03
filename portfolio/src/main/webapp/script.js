@@ -102,7 +102,7 @@ function addRandomGreeting() {
       greetings)[Math.floor(Math.random() * Object.keys(greetings).length)];
   const greeting = greetings[lang];
 
-  // Add it to the page.
+  // Add the language to the page.
   const langDiv = document.getElementById('lang');
   langDiv.innerText = lang;
   const greetingDiv = document.getElementById('greeting');
@@ -113,13 +113,28 @@ function addRandomGreeting() {
 
 function fetchComments() {
   fetch('/data').then(response => response.json()).then((jsonArr) => {
-    let ul = document.getElementById('comments-ul');
+    const parent = document.getElementById('comments-container');
     jsonArr
-        .map(comment => {
-          let e = document.createElement('li');
-          e.innerText = comment;
-          return e;
+        .map(m => {
+          let comment = createElement('div');
+          let title = createElement('div', 'comment-title', m.name);
+          let subtitle = createElement('div', 'comment-subtitle', m.timestamp);
+          let body = createElement('div', 'comment-body', m.comment);
+          let reply = createElement('a', 'comment-reply', 'Reply');
+          reply.href = `mailto:{m.email}?Subject%3DYour%20comment%20on%20sixtor-sps-spring20.appspot.com`;
+          comment.appendChild(title);
+          comment.appendChild(subtitle);
+          comment.appendChild(body);
+          comment.appendChild(reply);
+          return comment;
         })
-        .forEach(e => ul.appendChild(e));
+        .forEach(e => parent.appendChild(e));
   });
+
+  function createElement(type, className, text) {
+    let el = document.createElement(type);
+    el.className = className;
+    el.innerText = text;
+    return el;
+  }
 }

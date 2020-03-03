@@ -16,6 +16,7 @@ package com.google.sps.servlets;
 
 import com.google.gson.Gson;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
@@ -26,13 +27,50 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOExceptio
-    List<String> messages = new ArrayList<>();
-    messages.add("first");
-    messages.add("I love your blog!");
-    messages.add("this website hasn't been updated in 6 years...");
+  List<Comment> messages = new ArrayList<>();
 
+  private class Comment {
+    String comment;
+    String name;
+    String email;
+    Instant timestamp;
+
+    private Comment(String comment, String name, String email) {
+      this.comment = comment;
+      this.name = name;
+      this.email = email;
+      this.timestamp = Instant.now();
+    }
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String comment = getParameter(request, "comment", "");
+    String name = getParameter(request, "name", "");
+    String email = getParameter(request, "email", "");
+
+    // Store the comment
+    messages.add(new Comment(comment, name, email));
+
+    // Redirect the user
+    response.sendRedirect("index.html");
+  }
+
+  /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
+  }
+
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Gson gson = new Gson();
     String json = gson.toJson(messages);
 

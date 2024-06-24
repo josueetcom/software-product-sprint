@@ -14,7 +14,11 @@
 
 package com.google.sps.servlets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +27,54 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+  List<Comment> messages = new ArrayList<>();
+
+  private class Comment {
+    String comment;
+    String name;
+    String email;
+    Instant timestamp;
+
+    private Comment(String comment, String name, String email) {
+      this.comment = comment;
+      this.name = name;
+      this.email = email;
+      this.timestamp = Instant.now();
+    }
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String comment = getParameter(request, "comment", "");
+    String name = getParameter(request, "name", "");
+    String email = getParameter(request, "email", "");
+
+    // Store the comment
+    messages.add(new Comment(comment, name, email));
+
+    // Redirect the user
+    response.sendRedirect("index.html");
+  }
+
+  /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
+  }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello world!</h1>");
+    Gson gson = new Gson();
+    String json = gson.toJson(messages);
+
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
   }
 }
